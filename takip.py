@@ -2,7 +2,7 @@ import json, os, re
 import requests
 from bs4 import BeautifulSoup
 
-HEADERS = {"User-Agent": "Mozilla/5.0 (kişisel fiyat takibi)"}
+HEADERS = {"User-Agent": "Mozilla/5.0 (kisisel fiyat takibi)"}
 TOKEN = os.environ.get("TELEGRAM_TOKEN", "")
 CHAT = os.environ.get("TELEGRAM_CHAT_ID", "")
 DURUM = "durum.json"
