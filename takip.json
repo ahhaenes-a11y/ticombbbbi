@@ -1,14 +1,8 @@
 [
-  {
-    "ad": "Galatasaray - Ameed",
-    "url": "https://www.ticombo.com/en/discover/event/0d22e8f6-733b-4efa-9b05-dfa2f7a65a84?quantity=2",
-    "hedef_fiyat": 140,
-    "css_secici": null
-  },
-  {
-    "ad": "Ikinci etkinlik",
-    "url": "https://www.ticombo.com/en/discover/event/629b81df-dbd0-4e2e-ae96-940414f8ad6b?quantity=2",
-    "hedef_fiyat": 300,
-    "css_secici": null
-  }
+  {"ad": "Galatasaray - Amed (7 Kas)", "url": "https://www.ticombo.com/en/sports-tickets/football-tickets/galatasaray-sk-vs-amed-sk-trendyol-super-lig-3001411969/0d22e8f6-733b-4efa-9b05-dfa2f7a65a84", "guncel_en_dusuk": 108, "hedef_fiyat": 107, "css_secici": null},
+  {"ad": "Fenerbahce - Trabzonspor (13 Ara)", "url": "https://www.ticombo.com/en/sports-tickets/football-tickets/fenerbahce-sk-vs-trabzonspor-trendyol-super-lig-3001657471/c3fb070e-c047-4d45-9d6b-b12dae84aae8", "guncel_en_dusuk": 234, "hedef_fiyat": 233, "css_secici": null},
+  {"ad": "Galatasaray - Aston Villa (24 Kas)", "url": "https://www.ticombo.com/en/sports-tickets/football-tickets/galatasaray-sk-vs-aston-villa-fc-champions-league-3001361619/629b81df-dbd0-4e2e-ae96-940414f8ad6b", "guncel_en_dusuk": 209, "hedef_fiyat": 208, "css_secici": null},
+  {"ad": "Fenerbahce - Villarreal (20 Oca)", "url": "https://www.ticombo.com/en/sports-tickets/football-tickets/fenerbahce-sk-vs-villarreal-cf-champions-league-3001253815/bebf9e42-44ec-4a2a-a90d-a5167d749f91", "guncel_en_dusuk": 187, "hedef_fiyat": 186, "css_secici": null},
+  {"ad": "Fenerbahce - Amed (17 Oca)", "url": "https://www.ticombo.com/en/sports-tickets/football-tickets/fenerbahce-sk-vs-amed-sk-trendyol-super-lig-3001570272/7bf9b363-2ce9-407b-aeb0-5330f4df806e", "guncel_en_dusuk": 109, "hedef_fiyat": 108, "css_secici": null},
+  {"ad": "Besiktas - Galatasaray (30 Kas)", "url": "https://www.ticombo.com/en/sports-tickets/football-tickets/besiktas-jk-vs-galatasaray-sk-trendyol-super-lig-3001830573/92c965bf-1bf4-449f-a6b0-9093f5e3a7a1", "guncel_en_dusuk": 377, "hedef_fiyat": 376, "css_secici": null}
 ]
