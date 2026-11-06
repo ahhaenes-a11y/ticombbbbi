@@ -63,9 +63,18 @@ def fiyat_bul(html, css_secici=None):
 
 def telegram(mesaj):
     print(mesaj)
-    if TOKEN and CHAT:
-        requests.post(f"https://api.telegram.org/bot{TOKEN}/sendMessage",
-                      data={"chat_id": CHAT, "text": mesaj}, timeout=15)
+    if not (TOKEN and CHAT):
+        return
+    for deneme in range(3):
+        try:
+            r = requests.post(f"https://api.telegram.org/bot{TOKEN}/sendMessage",
+                              data={"chat_id": CHAT, "text": mesaj}, timeout=40)
+            print("Telegram yaniti:", r.status_code, r.text[:200])
+            if r.ok:
+                return
+        except Exception as e:
+            print("Telegram hatasi:", e)
+    raise RuntimeError("Telegram mesaji gonderilemedi")
 
 
 def main():
