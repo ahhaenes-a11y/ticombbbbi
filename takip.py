@@ -21,8 +21,7 @@ def sayi(metin):
         s = s.replace(".", "")
     try:
         return float(s)
-    except ValueError:
-        return None
+    except ValueError: return None
 
 
 def fiyat_bul(html, css_secici=None):
@@ -35,8 +34,7 @@ def fiyat_bul(html, css_secici=None):
     for tag in soup.find_all("script", type="application/ld+json"):
         try:
             veri = json.loads(tag.string or "")
-        except Exception:
-            continue
+        except Exception: continue
         bulunan = []
 
         def tara(o):
@@ -67,16 +65,11 @@ def telegram(mesaj):
         return False
     for deneme in range(3):
         try:
-            r = requests.post(
-                f"https://api.telegram.org/bot{TOKEN}/sendMessage",
-                data={"chat_id": CHAT, "text": mesaj},
-                timeout=40,
-            )
+            r = requests.post(f"https://api.telegram.org/bot{TOKEN}/sendMessage", data={"chat_id": CHAT, "text": mesaj}, timeout=40)
             print("Telegram yaniti:", r.status_code)
             if r.ok:
                 return True
-        except Exception as e:
-            print("Telegram hatasi:", type(e).__name__)
+        except Exception as e: print("Telegram hatasi:", type(e).__name__)
     return False
 
 
@@ -87,4 +80,18 @@ def main():
             r = requests.get(t["url"], headers=HEADERS, timeout=20)
             r.raise_for_status()
             fiyat = fiyat_bul(r.text, t.get("css_secici"))
-        except Exception as e:
+        except Exception as e: print(f"[{t['ad']}] hata: {e}"); continue
+        if fiyat is None:
+            print(f"[{t['ad']}] fiyat okunamadi")
+            continue
+        print(f"[{t['ad']}] su an: {fiyat} | hedef: {t['hedef_fiyat']}")
+        if fiyat <= t["hedef_fiyat"] and durum.get(t["ad"]) != fiyat:
+            if telegram(f"🔔 {t['ad']}: {fiyat} (hedef {t['hedef_fiyat']})\n{t['url']}"):
+                durum[t["ad"]] = fiyat
+        elif fiyat > t["hedef_fiyat"]:
+            durum.pop(t["ad"], None)
+    json.dump(durum, open(DURUM, "w"))
+
+
+if __name__ == "__main__":
+    main()
