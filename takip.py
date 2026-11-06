@@ -69,7 +69,7 @@ def telegram(mesaj):
         try:
             r = requests.post(f"https://api.telegram.org/bot{TOKEN}/sendMessage",
                               data={"chat_id": CHAT, "text": mesaj}, timeout=40)
-            print("Telegram yaniti:", r.status_code, r.text[:200])
+                        print("Telegram yaniti:", r.status_code)
             if r.ok:
                 return
         except Exception as e:
