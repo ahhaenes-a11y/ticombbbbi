@@ -64,17 +64,20 @@ def fiyat_bul(html, css_secici=None):
 def telegram(mesaj):
     print(mesaj)
     if not (TOKEN and CHAT):
-        return
+        return False
     for deneme in range(3):
         try:
-            r = requests.post(f"https://api.telegram.org/bot{TOKEN}/sendMessage",
-                              data={"chat_id": CHAT, "text": mesaj}, timeout=40)
-                        print("Telegram yaniti:", r.status_code)
+            r = requests.post(
+                f"https://api.telegram.org/bot{TOKEN}/sendMessage",
+                data={"chat_id": CHAT, "text": mesaj},
+                timeout=40,
+            )
+            print("Telegram yaniti:", r.status_code)
             if r.ok:
-                return
+                return True
         except Exception as e:
-            print("Telegram hatasi:", e)
-    raise RuntimeError("Telegram mesaji gonderilemedi")
+            print("Telegram hatasi:", type(e).__name__)
+    return False
 
 
 def main():
@@ -85,19 +88,3 @@ def main():
             r.raise_for_status()
             fiyat = fiyat_bul(r.text, t.get("css_secici"))
         except Exception as e:
-            print(f"[{t['ad']}] hata: {e}")
-            continue
-        if fiyat is None:
-            print(f"[{t['ad']}] fiyat okunamadı (css_secici gerekebilir)")
-            continue
-        print(f"[{t['ad']}] şu an: {fiyat} | hedef: {t['hedef_fiyat']}")
-        if fiyat <= t["hedef_fiyat"] and durum.get(t["ad"]) != fiyat:
-            telegram(f"🔔 {t['ad']}: {fiyat} (hedef {t['hedef_fiyat']})\n{t['url']}")
-            durum[t["ad"]] = fiyat
-        elif fiyat > t["hedef_fiyat"]:
-            durum.pop(t["ad"], None)
-    json.dump(durum, open(DURUM, "w"))
-
-
-if __name__ == "__main__":
-    main()
